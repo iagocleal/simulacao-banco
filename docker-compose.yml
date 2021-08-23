@@ -1,0 +1,25 @@
+version: '3.4'
+services:
+  db:
+    image: "mcr.microsoft.com/mssql/server:2017-latest"
+    restart: always
+    environment:
+      SA_PASSWORD: "S3nh@Fort3"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+  simulacao-banco:
+    image: simulacao-banco
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      TZ: America/Sao_paulo
+    ports:
+      - "8080:8080"
+    command: java -jar app.jar
+    links:
+      - db
+    depends_on:
+      - db    
