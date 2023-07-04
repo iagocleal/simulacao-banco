@@ -1,7 +1,5 @@
 package br.com.iago.simulacaoBanco.config;
 
-import java.util.function.Predicate;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,8 +10,10 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
+@EnableSwagger2
 public class CustomSwagger {
 
 	@Bean
@@ -22,14 +22,14 @@ public class CustomSwagger {
 				.apiInfo(apiInfo())
 				.select()
 				.apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
-				.paths(Predicate.not(PathSelectors.regex("/error.*")))
+				.paths(PathSelectors.any())
 				.build();
 	}
 	
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("Cadastrar Pessoas")
-				.description("Api para cadastrar pessoas utilizando spring")
+				.title("Simulação banco")
+				.description("Api para simular transações bancárias utilizando spring")
 				.version("1.0.0")
 				.build();
 	}
