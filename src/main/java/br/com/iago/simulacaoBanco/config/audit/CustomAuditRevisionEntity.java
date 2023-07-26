@@ -1,4 +1,4 @@
-package br.com.iago.simulacaoBanco.config;
+package br.com.iago.simulacaoBanco.config.audit;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -16,6 +16,6 @@ import org.hibernate.envers.RevisionEntity;
     @AttributeOverride(name = "timestamp", column = @Column(name = "REV_TIMESTAMP")),
     @AttributeOverride(name = "id", column = @Column(name = "REVISION_ID"))
 })
-public class AuditRevisionEntity extends DefaultRevisionEntity {
+public class CustomAuditRevisionEntity extends DefaultRevisionEntity {
 	
 }
