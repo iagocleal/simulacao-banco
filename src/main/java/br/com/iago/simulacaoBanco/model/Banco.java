@@ -9,6 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.envers.AuditTable;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
+
 import com.fasterxml.jackson.databind.jsonschema.JsonSerializableSchema;
 
 import lombok.AllArgsConstructor;
@@ -24,6 +28,8 @@ import lombok.Setter;
 @Setter
 @Entity
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Audited
+@AuditTable(value = "BANCO_AUDIT")
 @Table(name = "BANCO", schema = "SIMULACAO")
 public class Banco implements Serializable {
 	
@@ -43,5 +49,10 @@ public class Banco implements Serializable {
 	
 	@Column(name = "DESCRICAO")
 	private String descricao;
+	
+	@Getter
+	@Setter
+	@NotAudited
+	private Boolean audit;
 
 }

@@ -107,4 +107,8 @@ public class TransferenciaService {
 		}		
 	}
 
+	public Transferencia salvar(Transferencia transferencia) {
+		return transferenciaRepository.save(transferencia);
+	}
+
 }

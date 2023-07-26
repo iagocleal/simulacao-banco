@@ -1,0 +1,9 @@
+CREATE TABLE SIMULACAO.CONTA (
+			ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
+			AGENCIA varchar(10) NOT NULL,
+			DIGITO_AGENCIA varchar(3) NULL,
+			NUMERO varchar(10) NOT NULL,
+			DIGITO varchar(3) NOT NULL,
+			BANCO_FK int NOT NULL,
+			TIPO_CONTA int NOT NULL,
+			foreign key (BANCO_FK ) references BANCO(ID))

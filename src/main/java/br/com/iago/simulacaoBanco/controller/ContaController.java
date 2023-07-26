@@ -5,9 +5,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.iago.simulacaoBanco.model.Conta;
 import br.com.iago.simulacaoBanco.service.ContaService;
 
 @RestController
@@ -20,5 +23,10 @@ public class ContaController {
 	@GetMapping("/saldo/{id}")
 	public ResponseEntity<Double> getById(@PathVariable Long id) {
 		return new ResponseEntity<Double>(contaService.getSaldo(id),  HttpStatus.OK);
+	}
+	
+	@PostMapping
+	public ResponseEntity<Conta> salvar(@RequestBody Conta conta) {
+		return new ResponseEntity<Conta>(contaService.salvar(conta), HttpStatus.CREATED);
 	}
 }

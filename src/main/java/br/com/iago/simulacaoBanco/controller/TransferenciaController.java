@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.iago.simulacaoBanco.dto.TransferenciaDto;
 import br.com.iago.simulacaoBanco.dto.TransferenciaFuturaDto;
+import br.com.iago.simulacaoBanco.model.Conta;
 import br.com.iago.simulacaoBanco.model.Transferencia;
 import br.com.iago.simulacaoBanco.service.TransferenciaService;
 
@@ -45,6 +46,11 @@ public class TransferenciaController {
 	@GetMapping("/futuras/{idConta}")
 	public ResponseEntity<List<Transferencia>> getTransferenciasFutura(@PathVariable Long idConta) {
 		return new ResponseEntity<List<Transferencia>>(transferenciaService.getTransferenciasFutura(idConta),  HttpStatus.OK);
+	}
+	
+	@PostMapping("/salvar")
+	public ResponseEntity<Transferencia> salvar(@RequestBody Transferencia transferencia) {
+		return new ResponseEntity<Transferencia>(transferenciaService.salvar(transferencia), HttpStatus.CREATED);
 	}
 	
 }

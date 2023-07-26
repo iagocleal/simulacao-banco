@@ -23,4 +23,8 @@ public class ContaService {
 		return contaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Conta não encontrada."));
 	}
 
+	public Conta salvar(Conta conta) {
+		return contaRepository.save(conta);
+	}
+
 }
